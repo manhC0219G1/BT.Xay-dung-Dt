@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let Phone = function (name, pin) {
+        this.name = name;
+        this.pin = pin;
+        this.inbox = [];
+        this.outbox = [];
+        this.message = "";
+        this.writerMessage = function (message) {
+            this.message = message;
+        };
+        this.getName =function () {
+            return this.name;
+        };
+        this.getPin = function () {
+            return this.pin;
+        };
+        this.sendMessage = function (phone) {
+            phone.inbox.push(this.message);
+            phone.outbox.push(this.message);
+            this.pin--;
+        };
+        this.getInbox=function () {
+            return this.inbox
+        };
+    };
+    let nokia = new Phone("nokia",90);
+    let samsung = new Phone("OPPO",100);
+    nokia.writerMessage("chao ban");
+    nokia.sendMessage(samsung);
+    console.log(samsung.getInbox());
+    console.log(nokia.getPin());
+</script>
+</body>
+</html>
